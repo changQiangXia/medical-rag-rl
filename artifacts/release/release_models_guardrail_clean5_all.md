@@ -1,0 +1,17 @@
+# 护栏审计报告：release_models_guardrail_clean5_all
+
+- 生成时间：2026-02-28T10:08:33
+- 总文件数：4
+- 通过文件数：4
+
+| 文件 | 样本数 | 空回复 | 对话残片 | 引用标签异常 | 全角标签 | 无引用 | 过长回复 | 提示词残留 | 不完整引用尾巴 | 通过 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| outputs/baseline/sft_1k_v2_clean5_test.jsonl | 10 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | PASS |
+| outputs/baseline/rlvr_1k_v2_clean5_test.jsonl | 10 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | PASS |
+| outputs/baseline/sft_1k_v2_clean5_max.jsonl | 100 | 0 | 0 | 0 | 0 | 34 | 0 | 0 | 0 | PASS |
+| outputs/baseline/rlvr_1k_v2_clean5_max.jsonl | 100 | 0 | 0 | 0 | 0 | 20 | 0 | 0 | 0 | PASS |
+
+## 判定规则
+
+- `PASS` 条件：`空回复=0` 且 `对话残片=0` 且 `引用标签异常=0` 且 `提示词残留=0` 且 `不完整引用尾巴=0`。
+- `无引用`、`过长回复` 为提示项，不单独判 FAIL，可按业务要求追加阈值。

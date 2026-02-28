@@ -1,0 +1,72 @@
+{
+  "frozen_at": "2026-02-28",
+  "version": "v1.1-rlvr-1k-v2-clean4",
+  "release_policy": {
+    "primary": {
+      "name": "rlvr_1k_v2_clean4",
+      "adapter_path": "/root/autodl-tmp/medical-rag-rl/outputs/raft-rlvr-1k-v2/final",
+      "reason": "证据引用与可追溯性更强"
+    },
+    "fallback": {
+      "name": "sft_1k_v2_clean4",
+      "adapter_path": "/root/autodl-tmp/medical-rag-rl/outputs/raft-sft-1k-v2/final",
+      "reason": "与参考答案措辞更接近"
+    }
+  },
+  "base_model_path": "/root/autodl-tmp/medical-rag-rl/models/Qwen/Qwen2-7B-Instruct",
+  "retrieval": {
+    "index_path": "/root/autodl-tmp/medical-rag-rl/artifacts/index/train",
+    "embedder_path": "/root/autodl-tmp/medical-rag-rl/models/BAAI/bge-large-en-v1___5"
+  },
+  "metrics": {
+    "eval_test_10": {
+      "base_test": {
+        "avg_token_f1": 0.4828,
+        "avg_citation_consistency": 0.0,
+        "avg_evidence_hit_rate": 0.0
+      },
+      "sft_1k_v2_clean4_test": {
+        "avg_token_f1": 0.5523,
+        "avg_citation_consistency": 0.8,
+        "avg_evidence_hit_rate": 0.9
+      },
+      "dpo_1k_v2_clean4_test": {
+        "avg_token_f1": 0.5241,
+        "avg_citation_consistency": 0.7,
+        "avg_evidence_hit_rate": 0.7
+      },
+      "rlvr_1k_v2_clean4_test": {
+        "avg_token_f1": 0.5086,
+        "avg_citation_consistency": 0.8,
+        "avg_evidence_hit_rate": 0.8
+      }
+    },
+    "eval_max_100": {
+      "base_max": {
+        "avg_token_f1": 0.4506,
+        "avg_citation_consistency": 0.02,
+        "avg_evidence_hit_rate": 0.02
+      },
+      "sft_1k_v2_clean4_max": {
+        "avg_token_f1": 0.5419,
+        "avg_citation_consistency": 0.6017,
+        "avg_evidence_hit_rate": 0.65
+      },
+      "dpo_1k_v2_clean4_max": {
+        "avg_token_f1": 0.5039,
+        "avg_citation_consistency": 0.74,
+        "avg_evidence_hit_rate": 0.74
+      },
+      "rlvr_1k_v2_clean4_max": {
+        "avg_token_f1": 0.5085,
+        "avg_citation_consistency": 0.788,
+        "avg_evidence_hit_rate": 0.8
+      }
+    }
+  },
+  "notes": [
+    "已完成输出清洗，移除 Human/Assistant 对话残片",
+    "已修正评测中的跨语言证据命中低估",
+    "已降低 RLVR 显存占用并加入 OOM 跳过保护"
+  ]
+}

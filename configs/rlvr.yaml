@@ -1,0 +1,33 @@
+seed: 42
+output_dir: /root/autodl-tmp/medical-rag-rl/outputs/raft-rlvr
+data_path: /root/autodl-tmp/medical-rag-rl/data/synthetic/sft_train.jsonl
+model_name_or_path: /root/autodl-tmp/medical-rag-rl/models/Qwen/Qwen2-7B-Instruct
+adapter_name_or_path: /root/autodl-tmp/medical-rag-rl/outputs/raft-dpo/final
+algorithm: reinforce
+max_samples: 0
+max_prompt_len: 512
+max_new_tokens: 128
+batch_size: 1
+mini_batch_size: 1
+gradient_accumulation_steps: 16
+learning_rate: 5e-6
+num_train_epochs: 1
+max_steps: 0
+logging_steps: 1
+save_steps: 100
+num_workers: 0
+temperature: 0.8
+top_p: 0.9
+kl_coef: 0.01
+use_qlora: true
+gradient_checkpointing: true
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+reward_weights:
+  evidence_hit: 0.32
+  groundedness: 0.24
+  citation: 0.20
+  safety: 0.24
+  repetition_penalty: 0.18

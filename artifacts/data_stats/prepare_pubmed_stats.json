@@ -1,0 +1,56 @@
+{
+  "train": {
+    "num_records": 15000,
+    "num_rows": 42243,
+    "avg_chunk_words": 138.01,
+    "section_coverage": {
+      "OBJECTIVE": 13832,
+      "METHODS": 59337,
+      "RESULTS": 57925,
+      "CONCLUSIONS": 27163,
+      "BACKGROUND": 21725
+    },
+    "split": "train",
+    "output_path": "/root/autodl-tmp/medical-rag-rl/data/processed/jsonl/train.jsonl",
+    "dropped": {
+      "empty": 0,
+      "duplicate": 0
+    }
+  },
+  "dev": {
+    "num_records": 2500,
+    "num_rows": 7120,
+    "avg_chunk_words": 138.07,
+    "section_coverage": {
+      "BACKGROUND": 3449,
+      "OBJECTIVE": 2376,
+      "METHODS": 9964,
+      "RESULTS": 9841,
+      "CONCLUSIONS": 4582
+    },
+    "split": "dev",
+    "output_path": "/root/autodl-tmp/medical-rag-rl/data/processed/jsonl/dev.jsonl",
+    "dropped": {
+      "empty": 0,
+      "duplicate": 0
+    }
+  },
+  "test": {
+    "num_records": 2500,
+    "num_rows": 6993,
+    "avg_chunk_words": 138.51,
+    "section_coverage": {
+      "BACKGROUND": 3621,
+      "RESULTS": 9713,
+      "CONCLUSIONS": 4571,
+      "METHODS": 9897,
+      "OBJECTIVE": 2333
+    },
+    "split": "test",
+    "output_path": "/root/autodl-tmp/medical-rag-rl/data/processed/jsonl/test.jsonl",
+    "dropped": {
+      "empty": 0,
+      "duplicate": 0
+    }
+  }
+}

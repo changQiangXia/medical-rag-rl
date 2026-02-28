@@ -1,0 +1,72 @@
+{
+  "frozen_at": "2026-02-28",
+  "version": "v1.2-rlvr-1k-v2-clean5",
+  "release_policy": {
+    "primary": {
+      "name": "rlvr_1k_v2_clean5",
+      "adapter_path": "/root/autodl-tmp/medical-rag-rl/outputs/raft-rlvr-1k-v2/final",
+      "reason": "证据引用与可追溯性更强"
+    },
+    "fallback": {
+      "name": "sft_1k_v2_clean5",
+      "adapter_path": "/root/autodl-tmp/medical-rag-rl/outputs/raft-sft-1k-v2/final",
+      "reason": "与参考答案措辞更接近"
+    }
+  },
+  "metrics": {
+    "eval_max_100": {
+      "sft_1k_v2_clean5_max": {
+        "avg_token_f1": 0.5435,
+        "avg_citation_consistency": 0.6067,
+        "avg_evidence_hit_rate": 0.65,
+        "avg_doc_tag_repeat_ratio": 0.0067
+      },
+      "rlvr_1k_v2_clean5_max": {
+        "avg_token_f1": 0.5087,
+        "avg_citation_consistency": 0.788,
+        "avg_evidence_hit_rate": 0.8,
+        "avg_doc_tag_repeat_ratio": 0.024
+      }
+    },
+    "eval_test_10": {
+      "sft_1k_v2_clean5_test": {
+        "avg_token_f1": 0.5555,
+        "avg_citation_consistency": 0.8,
+        "avg_evidence_hit_rate": 0.9,
+        "avg_doc_tag_repeat_ratio": 0.0
+      },
+      "rlvr_1k_v2_clean5_test": {
+        "avg_token_f1": 0.5086,
+        "avg_citation_consistency": 0.8,
+        "avg_evidence_hit_rate": 0.8,
+        "avg_doc_tag_repeat_ratio": 0.0
+      }
+    }
+  },
+  "quality_gate": {
+    "clean4": {
+      "file": "/root/autodl-tmp/medical-rag-rl/artifacts/release/release_quality_gate_clean4_v2.json",
+      "passed_models": 0,
+      "total_models": 2,
+      "all_passed": false
+    },
+    "clean5": {
+      "file": "/root/autodl-tmp/medical-rag-rl/artifacts/release/release_quality_gate_clean5_all_v1.json",
+      "passed_models": 4,
+      "total_models": 4,
+      "all_passed": true
+    }
+  },
+  "guardrail": {
+    "file": "/root/autodl-tmp/medical-rag-rl/artifacts/release/release_models_guardrail_clean5_all.json",
+    "total_files": 4,
+    "passed_files": 4,
+    "total_prompt_residues": 0,
+    "total_incomplete_doc_tails": 0
+  },
+  "notes": [
+    "本版本重点为工程化与质控强化，不涉及模型权重再训练",
+    "生成后清洗新增 prompt 残留与不完整尾巴治理",
+    "新增统一发布门禁脚本 release_quality_gate.py"
+  ]
+}

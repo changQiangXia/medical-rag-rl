@@ -1,0 +1,8 @@
+{
+  "total": 100,
+  "train": 70,
+  "val": 20,
+  "test": 10,
+  "train_ratio": 0.7,
+  "val_ratio": 0.2
+}

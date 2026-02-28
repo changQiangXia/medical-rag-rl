@@ -1,0 +1,8 @@
+{
+  "source": "bootstrap",
+  "rows": 1000,
+  "split": "train",
+  "seed": 42,
+  "upsample": true,
+  "output_path": "/root/autodl-tmp/medical-rag-rl/data/synthetic/sft_train.jsonl"
+}

@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# Virtual env / local env
+.venv/
+venv/
+.env
+
+# Notebook cache
+.ipynb_checkpoints/
+
+# Local-only tutorial
+TUTORIAL.md
+
+# Runtime outputs
+logs/
+outputs/
+models/
+
+# Large / local datasets
+data/raw/
+data/processed/pubmed/pubmed_20k_rct/
+data/synthetic_bootstrap/
+
+# Optional local archive copy
+data/processed/pubmed_20k_rct.zip
+
+# Generated artifacts: ignore by default, keep release docs/templates
+artifacts/*
+!artifacts/release/
+!artifacts/release/**
+
+# Keep small data stats JSON if needed for debugging provenance
+!artifacts/data_stats/
+!artifacts/data_stats/*.json
+
+# Local caches
+.cache/

@@ -1,0 +1,46 @@
+{
+  "name": "release_models_guardrail_clean5",
+  "generated_at": "2026-02-28T09:54:41",
+  "summary": {
+    "total_files": 2,
+    "passed_files": 1,
+    "total_samples": 200,
+    "total_chat_markers": 0,
+    "total_malformed_doc_tags": 0,
+    "total_empty_responses": 0,
+    "total_prompt_residues": 1,
+    "total_incomplete_doc_tails": 0
+  },
+  "files": [
+    {
+      "file": "outputs/baseline/sft_1k_v2_clean5_max.jsonl",
+      "exists": true,
+      "num_samples": 100,
+      "empty_response_count": 0,
+      "chat_marker_count": 0,
+      "malformed_doc_tag_count": 0,
+      "fullwidth_doc_tag_count": 0,
+      "no_citation_count": 34,
+      "too_long_response_count": 0,
+      "prompt_residue_count": 1,
+      "incomplete_doc_tail_count": 0,
+      "avg_response_chars": 292.76,
+      "pass": false
+    },
+    {
+      "file": "outputs/baseline/rlvr_1k_v2_clean5_max.jsonl",
+      "exists": true,
+      "num_samples": 100,
+      "empty_response_count": 0,
+      "chat_marker_count": 0,
+      "malformed_doc_tag_count": 0,
+      "fullwidth_doc_tag_count": 0,
+      "no_citation_count": 20,
+      "too_long_response_count": 0,
+      "prompt_residue_count": 0,
+      "incomplete_doc_tail_count": 0,
+      "avg_response_chars": 275.96,
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medical-rag-rl"
+version = "0.1.0"
+description = "Medical RAG + RLHF + RLVR pipeline"
+requires-python = ">=3.10,<3.12"
+dependencies = [
+  "pyyaml==6.0.2",
+  "numpy==1.26.4",
+  "pandas==2.2.1",
+  "tqdm==4.66.2",
+  "scikit-learn==1.4.1.post1",
+  "faiss-cpu==1.8.0",
+  "transformers==4.39.3",
+  "accelerate==0.27.2",
+  "peft==0.8.2",
+  "trl==0.8.6",
+  "bitsandbytes==0.43.1",
+  "sentence-transformers==2.6.1",
+]
+
+[tool.setuptools.packages.find]
+include = ["src*"]

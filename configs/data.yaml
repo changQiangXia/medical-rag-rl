@@ -1,0 +1,9 @@
+raw_dir: /root/autodl-tmp/medical-rag-rl/data/raw/PubMed_20k_RCT
+processed_markdown_dir: /root/autodl-tmp/medical-rag-rl/data/processed/pubmed/pubmed_20k_rct
+processed_jsonl_dir: /root/autodl-tmp/medical-rag-rl/data/processed/jsonl
+synthetic_bootstrap_dir: /root/autodl-tmp/medical-rag-rl/data/synthetic_bootstrap/synthetic
+splits: [train, dev, test]
+chunk_size: 160
+chunk_overlap: 40
+min_chars: 40
+max_chars: 5000

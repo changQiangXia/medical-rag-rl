@@ -1,0 +1,15 @@
+project_root: /root/autodl-tmp/medical-rag-rl
+seed: 42
+device: cuda
+api:
+  enabled: false
+  provider: zhipu
+  max_calls_per_day: 300
+  max_calls_per_job: 100
+  qps: 1.0
+  retry_max: 3
+paths:
+  models: /root/autodl-tmp/medical-rag-rl/models
+  logs: /root/autodl-tmp/medical-rag-rl/logs
+  outputs: /root/autodl-tmp/medical-rag-rl/outputs
+  artifacts: /root/autodl-tmp/medical-rag-rl/artifacts

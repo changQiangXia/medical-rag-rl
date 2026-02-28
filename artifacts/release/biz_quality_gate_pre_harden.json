@@ -1,0 +1,229 @@
+{
+  "name": "biz_quality_gate_pre_harden",
+  "generated_at": "2026-02-28T09:33:37",
+  "thresholds": {
+    "min_citation": 0.6,
+    "min_evidence": 0.65,
+    "min_token_f1": 0.5,
+    "max_doc_repeat": 0.1,
+    "max_safety_refusal": 0.05,
+    "max_no_citation_ratio": 0.25,
+    "min_human_overall": 3.0,
+    "require_token_f1": false
+  },
+  "summary": {
+    "total_models": 2,
+    "passed_models": 0,
+    "all_passed": false
+  },
+  "models": [
+    {
+      "model": "biz_real_rlvr_pre_harden",
+      "pass": false,
+      "checks": [
+        {
+          "field": "avg_citation_consistency",
+          "observed": 0.8052,
+          "operator": ">=",
+          "target": 0.6,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "avg_evidence_hit_rate",
+          "observed": 0.85,
+          "operator": ">=",
+          "target": 0.65,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "avg_doc_tag_repeat_ratio",
+          "observed": 0.0896,
+          "operator": "<=",
+          "target": 0.1,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "avg_safety_refusal_rate",
+          "observed": 0.0,
+          "operator": "<=",
+          "target": 0.05,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "avg_token_f1",
+          "observed": null,
+          "operator": ">=",
+          "target": 0.5,
+          "pass": true,
+          "note": "missing avg_token_f1 in metric json"
+        },
+        {
+          "field": "no_citation_ratio",
+          "observed": 0.15,
+          "operator": "<=",
+          "target": 0.25,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "empty_response_count",
+          "observed": 0.0,
+          "operator": "==",
+          "target": 0.0,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "chat_marker_count",
+          "observed": 0.0,
+          "operator": "==",
+          "target": 0.0,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "malformed_doc_tag_count",
+          "observed": 0.0,
+          "operator": "==",
+          "target": 0.0,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "prompt_residue_count",
+          "observed": 1.0,
+          "operator": "==",
+          "target": 0.0,
+          "pass": false,
+          "note": ""
+        },
+        {
+          "field": "incomplete_doc_tail_count",
+          "observed": 3.0,
+          "operator": "==",
+          "target": 0.0,
+          "pass": false,
+          "note": ""
+        },
+        {
+          "field": "human_overall_0_5",
+          "observed": 3.25,
+          "operator": ">=",
+          "target": 3.0,
+          "pass": true,
+          "note": ""
+        }
+      ],
+      "metric_path": "artifacts/metrics/biz_real_rlvr_pre_harden.json",
+      "pred_path": "outputs/baseline/biz_real_rlvr_pre_harden.jsonl"
+    },
+    {
+      "model": "biz_real_sft_pre_harden",
+      "pass": false,
+      "checks": [
+        {
+          "field": "avg_citation_consistency",
+          "observed": 0.7375,
+          "operator": ">=",
+          "target": 0.6,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "avg_evidence_hit_rate",
+          "observed": 0.85,
+          "operator": ">=",
+          "target": 0.65,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "avg_doc_tag_repeat_ratio",
+          "observed": 0.025,
+          "operator": "<=",
+          "target": 0.1,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "avg_safety_refusal_rate",
+          "observed": 0.0,
+          "operator": "<=",
+          "target": 0.05,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "avg_token_f1",
+          "observed": null,
+          "operator": ">=",
+          "target": 0.5,
+          "pass": true,
+          "note": "missing avg_token_f1 in metric json"
+        },
+        {
+          "field": "no_citation_ratio",
+          "observed": 0.15,
+          "operator": "<=",
+          "target": 0.25,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "empty_response_count",
+          "observed": 0.0,
+          "operator": "==",
+          "target": 0.0,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "chat_marker_count",
+          "observed": 0.0,
+          "operator": "==",
+          "target": 0.0,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "malformed_doc_tag_count",
+          "observed": 0.0,
+          "operator": "==",
+          "target": 0.0,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "prompt_residue_count",
+          "observed": 4.0,
+          "operator": "==",
+          "target": 0.0,
+          "pass": false,
+          "note": ""
+        },
+        {
+          "field": "incomplete_doc_tail_count",
+          "observed": 0.0,
+          "operator": "==",
+          "target": 0.0,
+          "pass": true,
+          "note": ""
+        },
+        {
+          "field": "human_overall_0_5",
+          "observed": 3.1,
+          "operator": ">=",
+          "target": 3.0,
+          "pass": true,
+          "note": ""
+        }
+      ],
+      "metric_path": "artifacts/metrics/biz_real_sft_pre_harden.json",
+      "pred_path": "outputs/baseline/biz_real_sft_pre_harden.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "name": "release_models_guardrail_audit",
+  "generated_at": "2026-02-28T08:08:04",
+  "summary": {
+    "total_files": 4,
+    "passed_files": 2,
+    "total_samples": 220,
+    "total_chat_markers": 0,
+    "total_malformed_doc_tags": 6,
+    "total_empty_responses": 0
+  },
+  "files": [
+    {
+      "file": "outputs/baseline/sft_1k_v2_clean3_test.jsonl",
+      "exists": true,
+      "num_samples": 10,
+      "empty_response_count": 0,
+      "chat_marker_count": 0,
+      "malformed_doc_tag_count": 0,
+      "fullwidth_doc_tag_count": 0,
+      "no_citation_count": 1,
+      "too_long_response_count": 0,
+      "avg_response_chars": 289.5,
+      "pass": true
+    },
+    {
+      "file": "outputs/baseline/sft_1k_v2_clean3_max.jsonl",
+      "exists": true,
+      "num_samples": 100,
+      "empty_response_count": 0,
+      "chat_marker_count": 0,
+      "malformed_doc_tag_count": 2,
+      "fullwidth_doc_tag_count": 0,
+      "no_citation_count": 34,
+      "too_long_response_count": 0,
+      "avg_response_chars": 299.4,
+      "pass": false
+    },
+    {
+      "file": "outputs/baseline/rlvr_1k_v2_clean3_test.jsonl",
+      "exists": true,
+      "num_samples": 10,
+      "empty_response_count": 0,
+      "chat_marker_count": 0,
+      "malformed_doc_tag_count": 0,
+      "fullwidth_doc_tag_count": 0,
+      "no_citation_count": 2,
+      "too_long_response_count": 0,
+      "avg_response_chars": 274.0,
+      "pass": true
+    },
+    {
+      "file": "outputs/baseline/rlvr_1k_v2_clean3_max.jsonl",
+      "exists": true,
+      "num_samples": 100,
+      "empty_response_count": 0,
+      "chat_marker_count": 0,
+      "malformed_doc_tag_count": 4,
+      "fullwidth_doc_tag_count": 0,
+      "no_citation_count": 21,
+      "too_long_response_count": 0,
+      "avg_response_chars": 278.21,
+      "pass": false
+    }
+  ]
+}

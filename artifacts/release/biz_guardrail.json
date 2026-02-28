@@ -1,0 +1,40 @@
+{
+  "name": "biz_guardrail",
+  "generated_at": "2026-02-28T09:05:24",
+  "summary": {
+    "total_files": 2,
+    "passed_files": 2,
+    "total_samples": 40,
+    "total_chat_markers": 0,
+    "total_malformed_doc_tags": 0,
+    "total_empty_responses": 0
+  },
+  "files": [
+    {
+      "file": "outputs/baseline/biz_rlvr.jsonl",
+      "exists": true,
+      "num_samples": 20,
+      "empty_response_count": 0,
+      "chat_marker_count": 0,
+      "malformed_doc_tag_count": 0,
+      "fullwidth_doc_tag_count": 0,
+      "no_citation_count": 8,
+      "too_long_response_count": 0,
+      "avg_response_chars": 238.2,
+      "pass": true
+    },
+    {
+      "file": "outputs/baseline/biz_sft.jsonl",
+      "exists": true,
+      "num_samples": 20,
+      "empty_response_count": 0,
+      "chat_marker_count": 0,
+      "malformed_doc_tag_count": 0,
+      "fullwidth_doc_tag_count": 0,
+      "no_citation_count": 5,
+      "too_long_response_count": 0,
+      "avg_response_chars": 251.65,
+      "pass": true
+    }
+  ]
+}

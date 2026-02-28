@@ -1,0 +1,20 @@
+{"id":"biz_001","query":"门诊戒烟项目里，手机短信干预（text messaging / QuitTXT）通常能否提高戒烟成功率？请给出简要结论和适用人群。","reference":"","tag":"smoking_cessation"}
+{"id":"biz_002","query":"对于膝骨关节炎（knee osteoarthritis），低剂量泼尼松（low-dose prednisolone）在短期内对疼痛和功能是否有帮助？","reference":"","tag":"musculoskeletal"}
+{"id":"biz_003","query":"2型糖尿病患者采用餐时胰岛素自我滴定（self-titration）时，每日调整（Q1D）和每3天调整（Q3D）总体效果差异大吗？","reference":"","tag":"diabetes"}
+{"id":"biz_004","query":"慢性鼻炎/鼻窦炎患者使用鼻腔冲洗（nasal rinse）装置时，不同系统在易用性和患者偏好上有没有明显差异？","reference":"","tag":"ent"}
+{"id":"biz_005","query":"儿童吸烟预防网站如果增加“短信/邮件提示（prompts）”，是否能提高重复访问和持续使用率？","reference":"","tag":"digital_health"}
+{"id":"biz_006","query":"在放射性碘治疗 Graves 病后，眼病恶化（GO exacerbation）风险受哪些因素影响？预防性激素是否总是必要？","reference":"","tag":"endocrine"}
+{"id":"biz_007","query":"家庭康复设备（home-based rehab technology）在真实使用中常见的依从性障碍有哪些？通常怎么改进？","reference":"","tag":"rehabilitation"}
+{"id":"biz_008","query":"针对情绪性进食（emotional eating），干预后情绪和饮食行为一般会同步改善吗？","reference":"","tag":"mental_health"}
+{"id":"biz_009","query":"轻中度高血压患者，生活方式干预（减盐+运动）相较常规宣教通常能否进一步降低收缩压？","reference":"","tag":"cardiometabolic"}
+{"id":"biz_010","query":"COPD 患者参加肺康复（pulmonary rehabilitation）后，运动耐量和生活质量通常会不会改善？","reference":"","tag":"respiratory"}
+{"id":"biz_011","query":"失眠患者接受 CBT-I（cognitive behavioral therapy for insomnia）相比单纯睡眠卫生教育，疗效差异通常如何？","reference":"","tag":"sleep"}
+{"id":"biz_012","query":"社区老年人防跌倒项目中，平衡+力量训练（balance and strength training）对跌倒发生率有多大帮助？","reference":"","tag":"geriatrics"}
+{"id":"biz_013","query":"肥胖或超重儿童的校园综合干预（饮食教育+体力活动）对 BMI 改善是否稳定？","reference":"","tag":"pediatrics"}
+{"id":"biz_014","query":"轻中度抑郁患者中，CBT 与抗抑郁药物在短期症状改善上通常是谁更优，还是相近？","reference":"","tag":"mental_health"}
+{"id":"biz_015","query":"哮喘患者的用药提醒（reminder）和自我管理教育，是否能提升吸入药依从性并减少急性发作？","reference":"","tag":"respiratory"}
+{"id":"biz_016","query":"妊娠糖尿病（GDM）人群中，饮食+运动管理相较常规随访，是否更容易控制血糖并减少胰岛素使用？","reference":"","tag":"obstetrics"}
+{"id":"biz_017","query":"慢性下腰痛（chronic low back pain）患者进行运动疗法，相比常规护理是否能带来可感知的疼痛缓解？","reference":"","tag":"musculoskeletal"}
+{"id":"biz_018","query":"类风湿关节炎（RA）早期采用强化治疗/达标治疗（treat-to-target）是否更容易达到缓解？","reference":"","tag":"rheumatology"}
+{"id":"biz_019","query":"2型糖尿病管理中，短信或数字化随访（digital follow-up）对 HbA1c 改善是否有实际意义？","reference":"","tag":"digital_health"}
+{"id":"biz_020","query":"门诊预约提醒（短信/电话）能否有效降低 no-show（爽约）率？适合优先用于哪些人群？","reference":"","tag":"operations"}

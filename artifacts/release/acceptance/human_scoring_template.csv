@@ -1,0 +1,6 @@
+sample_id,query,reference,model_name,response,correctness_0_5,evidence_alignment_0_5,readability_0_5,safety_0_5,overall_0_5,error_type,reviewer,notes
+biz_001,,,,,,,,,,,,
+biz_002,,,,,,,,,,,,
+biz_003,,,,,,,,,,,,
+biz_004,,,,,,,,,,,,
+biz_005,,,,,,,,,,,,

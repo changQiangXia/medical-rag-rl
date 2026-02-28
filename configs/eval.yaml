@@ -1,0 +1,3 @@
+seed: 42
+retrieval_top_k: 5
+metrics: [recall_at_5, mrr, evidence_hit_rate, citation_consistency, safety_refusal_rate]
