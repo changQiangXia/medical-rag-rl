@@ -237,35 +237,137 @@ bash scripts/run_release_checks.sh
 - `artifacts/release/release_freeze_2026-02-28_v1.2.md`
 - `artifacts/release/release_freeze_2026-02-28_v1.2.json`
 
-### 7.2 推荐发布模型（clean5）
+### 7.2 评测口径与可比性
 
-- 主发布：`rlvr_1k_v2_clean5`（证据对齐优先）
-  - 适配器：`outputs/raft-rlvr-1k-v2/final`
-- 回退发布：`sft_1k_v2_clean5`（语义贴近优先）
-  - 适配器：`outputs/raft-sft-1k-v2/final`
+- 主对比集：`eval_max`（100 条），用于阶段间主结论。
+- 小样本验证集：`eval_test`（10 条），用于发布前快速回归。
+- 全部指标来自 `artifacts/metrics/*.json`，门禁结果来自 `artifacts/release/*.json`。
+- 业务验收集不提供标准答案，因此业务门禁中 `avg_token_f1` 设为可选（`require_token_f1=false`）。
 
-### 7.3 关键指标（eval_max=100）
+### 7.3 分阶段结果总览（eval_max=100）
+
+| 阶段/模型 | avg_token_f1 | avg_citation_consistency | avg_evidence_hit_rate | avg_doc_tag_repeat_ratio | avg_safety_refusal_rate |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| base_max | 0.4506 | 0.0200 | 0.0200 | 0.0000 | 0.2400 |
+| sft_1k_v2_clean4_max | 0.5419 | 0.6017 | 0.6500 | 0.0067 | 0.0200 |
+| dpo_1k_v2_clean4_max | 0.5039 | 0.7400 | 0.7400 | 0.0000 | 0.0000 |
+| rlvr_1k_v2_clean4_max | 0.5085 | 0.7880 | 0.8000 | 0.0240 | 0.0000 |
+| sft_1k_v2_clean5_max | 0.5435 | 0.6067 | 0.6500 | 0.0067 | 0.0200 |
+| rlvr_1k_v2_clean5_max | 0.5087 | 0.7880 | 0.8000 | 0.0240 | 0.0000 |
+
+结论：
+
+- SFT 阶段把语义贴近度（token_f1）从 `0.4506` 拉升到 `0.5419~0.5435`，提升最显著。
+- DPO/RLVR 阶段继续提升证据维度，citation 与 evidence 分别提升到 `0.74/0.74` 与 `0.788/0.8`。
+- RLVR 的证据对齐最佳，SFT 的 token_f1 最优，形成清晰的双模型互补结构。
+
+### 7.4 相对 base 的增益拆解（eval_max=100）
+
+| 模型 | Δtoken_f1 | Δcitation | Δevidence_hit | Δsafety_refusal |
+| --- | ---: | ---: | ---: | ---: |
+| sft_1k_v2_clean4_max | +0.0913 | +0.5817 | +0.6300 | -0.2200 |
+| dpo_1k_v2_clean4_max | +0.0533 | +0.7200 | +0.7200 | -0.2400 |
+| rlvr_1k_v2_clean4_max | +0.0579 | +0.7680 | +0.7800 | -0.2400 |
+| sft_1k_v2_clean5_max | +0.0929 | +0.5867 | +0.6300 | -0.2200 |
+| rlvr_1k_v2_clean5_max | +0.0581 | +0.7680 | +0.7800 | -0.2400 |
+
+结果解释：
+
+- SFT 的主要收益来自语义生成能力增强；RLVR 的主要收益来自证据引用与命中率增强。
+- 安全拒答率在训练后显著下降（`0.24 -> 0.00~0.02`），可用性明显提升。
+- `doc_tag_repeat_ratio` 在 RLVR 高于 SFT，但仍低于门禁阈值 `0.05`。
+
+### 7.5 clean4 -> clean5 的增量影响
+
+| 模型 | token_f1 增量 | citation 增量 | evidence 增量 | repeat 增量 | safety 增量 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| sft: clean4 -> clean5 | +0.0016 | +0.0050 | +0.0000 | +0.0000 | +0.0000 |
+| rlvr: clean4 -> clean5 | +0.0002 | +0.0000 | +0.0000 | +0.0000 | +0.0000 |
+
+结论：
+
+- clean5 的核心价值不在“再拉高指标”，而在“清洗与护栏后的发布稳定性”。
+- 指标基本持平说明 clean5 对主能力无明显副作用，可视为低风险工程化强化版本。
+
+### 7.6 发布集与小样本回归（eval_test=10）
 
 | 模型 | avg_token_f1 | avg_citation_consistency | avg_evidence_hit_rate | avg_doc_tag_repeat_ratio |
 | --- | ---: | ---: | ---: | ---: |
-| sft_1k_v2_clean5 | 0.5435 | 0.6067 | 0.6500 | 0.0067 |
-| rlvr_1k_v2_clean5 | 0.5087 | 0.7880 | 0.8000 | 0.0240 |
+| sft_1k_v2_clean5_test | 0.5555 | 0.8000 | 0.9000 | 0.0000 |
+| rlvr_1k_v2_clean5_test | 0.5086 | 0.8000 | 0.8000 | 0.0000 |
 
-### 7.4 关键指标（eval_test=10）
+说明：
 
-| 模型 | avg_token_f1 | avg_citation_consistency | avg_evidence_hit_rate | avg_doc_tag_repeat_ratio |
-| --- | ---: | ---: | ---: | ---: |
-| sft_1k_v2_clean5 | 0.5555 | 0.8000 | 0.9000 | 0.0000 |
-| rlvr_1k_v2_clean5 | 0.5086 | 0.8000 | 0.8000 | 0.0000 |
+- 小样本下两模型均满足门禁阈值。
+- SFT 在小样本语义贴近度更高，RLVR 在大样本证据维度更稳定。
 
-### 7.5 门禁与护栏结果
+### 7.7 门禁与护栏：前后对照
 
-- clean4 质量门禁：`0/2` 通过
-  - `artifacts/release/release_quality_gate_clean4_v2.json`
-- clean5 质量门禁（test+max）：`4/4` 通过
-  - `artifacts/release/release_quality_gate_clean5_all_v1.json`
-- clean5 护栏审计（test+max）：`4/4` 文件通过
-  - `artifacts/release/release_models_guardrail_clean5_all.json`
+#### 7.7.1 业务验收集（真实问题）
+
+| 检查项 | 强化前 | 强化后 |
+| --- | ---: | ---: |
+| 护栏通过文件数 | 0/2 | 2/2 |
+| 质量门禁通过模型数 | 0/2 | 2/2 |
+| prompt residue 总数 | 5 | 0 |
+| incomplete tail 总数 | 3 | 0 |
+
+对应文件：
+
+- `artifacts/release/biz_real_guardrail_pre_harden_v2.json`
+- `artifacts/release/biz_real_guardrail_harden_v3.json`
+- `artifacts/release/biz_quality_gate_pre_harden.json`
+- `artifacts/release/biz_quality_gate_harden_v3.json`
+
+#### 7.7.2 发布评测集（test+max）
+
+| 检查项 | clean4 | clean5 |
+| --- | ---: | ---: |
+| 质量门禁通过模型数 | 0/2 | 4/4 |
+| 护栏通过文件数 | 未形成最终全通过报告 | 4/4 |
+| prompt residue 比例 | 出现超阈值样本 | 全部为 0 |
+| incomplete tail 比例 | 出现超阈值样本 | 全部为 0 |
+
+对应文件：
+
+- `artifacts/release/release_quality_gate_clean4_v2.json`
+- `artifacts/release/release_quality_gate_clean5_all_v1.json`
+- `artifacts/release/release_models_guardrail_clean5_all.json`
+
+### 7.8 人工评分分析（40 条，Codex 代评）
+
+来源：`artifacts/release/acceptance/human_scoring_final_summary.md`
+
+| 模型 | correctness | evidence_alignment | readability | safety | overall |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| biz_real_rlvr | 3.20 | 3.10 | 2.85 | 5.00 | 3.25 |
+| biz_real_sft | 3.30 | 3.10 | 2.75 | 5.00 | 3.10 |
+
+客观解读：
+
+- RLVR 的综合分更高（`3.25`），优势来自结构化输出稳定性与整体可读性。
+- SFT 的 correctness 略高（`3.30`），但在可读性与格式稳定性上略逊。
+- 两模型 safety 均为 `5.00`，安全性风险可控。
+- 主要误差类型集中在轻度幻觉、格式噪声、提示词残留与截断，已在 clean5 通过清洗与护栏显著收敛。
+
+### 7.9 发布建议与选择策略
+
+- 主发布：`rlvr_1k_v2_clean5`
+- 回退发布：`sft_1k_v2_clean5`
+- 适用策略：
+  - 证据对齐、可追溯性优先时，选择 RLVR。
+  - 语义贴近与问答自然性优先时，选择 SFT。
+  - 面向生产上线时，保持双模型并行灰度，按业务指标动态路由。
+
+### 7.10 剩余风险与后续优化方向
+
+- 剩余风险：
+  - 少量样本仍存在轻度术语漂移与可读性波动。
+  - 业务场景缺少更大规模人工标注集，长期评估方差仍偏高。
+- 优化方向：
+  - 扩充高质量医学问答标注，按病种分层抽样。
+  - 引入规则化术语表与后处理对齐器，压缩术语漂移。
+  - 持续化门禁运行（按周/按版本）并累计趋势报表。
 
 ---
 
